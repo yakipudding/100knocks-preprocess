@@ -1,11 +1,13 @@
 Name
 ====
-データサイエンス100本ノック（構造化データ加工編）
+データサイエンス100本ノック（構造化データ加工編） for SQL Server
 
 Overview
 ====
 - データサイエンス100本ノック（構造化データ加工編）を実践するための演習問題とデータ、および環境構築のためのスクリプト一式
-- 演習問題はSQL、Python、Rで共通
+  - [本家](https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess)を個人が改変したものになります
+  - **SQL Server（Transact-SQL）とPythonのみ対応しています**
+  - [本家](https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess)と異なり、**Dockerは使用せず、クライアント側でDB・VSCode上のJupyterの環境構築を前提としています**
 - 言語によっては向かない設問もあるが、「この言語のときはこう書けば実現できる」という技術習得を目指すことを優先
 - 個人情報のように見える項目は全てダミーデータを利用
 - 大学、企業など組織でのご利用にあたっては、「データサイエンティスト協会スキル定義委員」の「データサイエンス100本ノック（構造化データ加工編）」を利用していることを明示いただければ自由に利用してOK
@@ -14,52 +16,61 @@ Overview
 
 Description
 ====
-- Dockerfile(dockerfiles/notebook/Dockerfile, dockerfiles/notebook/Dockerfile)
-- docker-compose.yml
 - スーパーの架空購買データと架空個人情報(csv)
 - データベースを初期設定するための各種スクリプト
 
 Requirement
 ====
-- Docker Desktop(Windows 10 proffesional Edition, macOS)
-   - Apple M1チップ搭載のMacの場合は Docker Desktop 4.0.1 まで
-- Docker Toolbox(Windows 10 home edition)
+- SQL Server 2017以上
+- Python 3.9
+- VSCode
+  - Jupyter Notebookが利用できるように環境設定します
 
-※Windows 10 home でもWSL2をインストールすることでDocker Desktopが使えるようになりました！
 
 Install
 ====
 ::
 
-  git clone git@github.com:The-Japan-DataScientist-Society/100knocks-preprocess.git
+  git clone https://github.com/yakipudding/100knocks-preprocess.git
   cd 100knocks-preprocess
-  docker-compose up -d --build
 
-※ OSユーザーのホームディレクトリ配下以外にダウンロードする場合、Dockerの共有設定が別途必要となります
-
-※ Windowsでgitを利用する場合、デフォルト設定でのインストールを行うとスクリプトの改行コードを変えられてしまい、データベースを正しく構築できないことがあります
-- https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/issues/1#issue-640590032
-
-※ 改行を変えないよう設定するか、ZIPをダウンロードして利用してください
-
-※ コンテナは作成されたがデータベースに接続できない、という場合の多くはディレクトリに対するアクセス権限設定の問題となります
-
-※ Docker Toolboxでのコンテナ作成がうまく行かない場合、Gitのbashプロンプトから実行するとうまく作成できたという報告も見られます
-- https://www.youtube.com/watch?v=mh8Z5d0-0PU&feature=em-comments
-
-※ インストールの説明はdoc配下の説明資料も参照してください
+- (TSQLのみ)DB準備
+  - SQL Serverのインストール
+    - 公式サイトからSQL Server2019をインストールしてください
+      - おそらく2017以上でも問題ありませんが、動作未確認です
+    - SQLServerのインスタンスを作成してください（既存のインスタンスでもOK）
+    - インスタンスのプロパティで**SQL Server認証の有効化、リモート接続の有効化を行ってください**
+  - db/init下のクエリを実行してください
+- VSCode上でJupyterNotebookを動かす環境構築
+  - Python3.9をインストール
+  - VSCodeをインストール
+  - VSCodeの拡張機能でJupyterをインストール
+  - VSCodeで.ipynbファイルを開く
+- 必要なライブラリをpipでインストール
+  - TSQLのみ
+    - ipython-sql
+    - pyodbc
+  - Pythonのみ
+    - pandas
+    - numpy
+    - python-dateutil
+    - sklearn
+    - imblearn
 
 Usage
 ====
-- Docker Desktopの場合
-http://localhost:8888
+work下のnotebookファイルを開く
 
-- Docker Toolboxの場合
-http://192.168.99.100:8888
+- TSQLの場合
+  - preprocess_knock_TSQL.ipynbを開く
+- Pythonの場合
+  - preprocess_knock_Python.ipynbを開く
 
 Document
 ====
 - doc配下にデータサイエンス100本ノック（構造化データ加工編）の説明資料と設問PDF、設問HTMLを配置
+  - [100本ノックガイド](https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/blob/master/docker/doc/100knocks_guide.pdf)は本家のものを参照してください
+  - [100本ノック設問一覧](https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/blob/master/docker/doc/100knocks_questions.pdf)は本家のものを参照してください
 - work配下に設問notebookを配置
 - work/answer配下に解答例notebookを配置
 - work/data配下に使用したデータを配置
@@ -68,6 +79,8 @@ Link
 ====
 本コンテンツの内容やセットアップ手順について解説いただいているサイト、Dockerについて基本から学べるサイト
 
+- データサイエンス100本ノック（構造化データ加工編）（本家）
+  - https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess
 - 【データサイエンスを学ぶあなたへ】100本ノック - 構造化データ処理編 - 最速レビュー動画！【データサイエンティスト協会】#062
   - https://www.youtube.com/watch?v=fAyj0V2iAc4
 - データサイエンス100本ノック（構造化データ加工編）を試してみた
@@ -81,11 +94,11 @@ Link
 - データサイエンス初学者にむけた、データサイエンス100本ノックを実装する方法（windows10 Home向け）
   - https://qiita.com/syuki-read/items/714fe66bf5c16b8a7407#comment-394d2f7656bd5b977e11
 
-Author
+（元の）Author
 ====
 The Data Scientist Society
+（を改変したものになります）
 
 LICENSE
 ====
-- docker/doc/100knocks_guide.pdfは協会ロゴ等が含まれるため、CC-BY-NDとなります
-- その他ファイルはMITライセンスに従います
+- MITライセンスに従います
