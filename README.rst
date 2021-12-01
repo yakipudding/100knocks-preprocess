@@ -9,6 +9,7 @@ Overview
   - 本家のhttps://github.com/The-Japan-DataScientist-Society/100knocks-preprocess を個人が改変したものになります
   - **SQL Server（Transact-SQL）とPythonのみ対応しています**
   - 本家と異なり、**Dockerは使用せず、クライアント側でDB・VSCode上のJupyterの環境構築を前提としています**
+
 - 言語によっては向かない設問もあるが、「この言語のときはこう書けば実現できる」という技術習得を目指すことを優先
 - 個人情報のように見える項目は全てダミーデータを利用
 - 大学、企業など組織でのご利用にあたっては、「データサイエンティスト協会スキル定義委員」の「データサイエンス100本ノック（構造化データ加工編）」を利用していることを明示いただければ自由に利用してOK
@@ -42,10 +43,13 @@ Install
 
     - 公式サイトからSQL Server2019をインストールしてください
 
-      - おそらく2017以上でも問題ありませんが、動作未確認です
+      - 2016以上でも動くことは確認しています
+
     - SQLServerのインスタンスを作成してください（既存のインスタンスでもOK）
     - インスタンスのプロパティで **SQL Server認証の有効化、リモート接続の有効化を行ってください**
+
   - db/init下のクエリを実行してください
+
 - VSCode上でJupyterNotebookを動かす環境構築
 
   - Python3.9をインストール
@@ -75,6 +79,7 @@ work下のnotebookファイルを開く
 - TSQLの場合
 
   - preprocess_knock_TSQL.ipynbを開く
+  
 - Pythonの場合
 
   - preprocess_knock_Python.ipynbを開く
@@ -90,6 +95,7 @@ Document
   - 100本ノック設問一覧は本家のものを参照してください
 
     - https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/blob/master/docker/doc/100knocks_questions.pdf
+
 - work配下に設問notebookを配置
 - work/answer配下に解答例notebookを配置
 - work/data配下に使用したデータを配置
@@ -126,10 +132,9 @@ Link
 
   - https://qiita.com/syuki-read/items/714fe66bf5c16b8a7407#comment-394d2f7656bd5b977e11
 
-（元の）Author
+Author
 ====
-The Data Scientist Society
-（を改変したものになります）
+本家：The Data Scientist Society
 
 LICENSE
 ====

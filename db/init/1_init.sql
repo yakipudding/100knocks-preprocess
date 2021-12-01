@@ -4,9 +4,10 @@ GO
 CREATE DATABASE [100KnocksPreprocess]
  CONTAINMENT = NONE
  ON  PRIMARY 
-( NAME = N'100KnocksPreprocess', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\100KnocksPreprocess.mdf' , SIZE = 51200KB , FILEGROWTH = 0)
+-- SQLServerのバージョンに合わせてフォルダパスを指定してください
+( NAME = N'100KnocksPreprocess', FILENAME = N'★パス指定★\MSSQL\DATA\100KnocksPreprocess.mdf' , SIZE = 204800KB , FILEGROWTH = 10240KB)
  LOG ON 
-( NAME = N'100KnocksPreprocess_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\100KnocksPreprocess_log.ldf' , SIZE = 204800KB , FILEGROWTH = 0)
+( NAME = N'100KnocksPreprocess_log', FILENAME = N'★パス指定★\MSSQL\DATA\100KnocksPreprocess_log.ldf' , SIZE = 204800KB , FILEGROWTH = 10240KB)
 GO
 
 -- ログイン作成
